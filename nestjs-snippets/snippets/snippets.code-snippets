@@ -1,0 +1,291 @@
+{
+  "getQueryBuilder": {
+    "prefix": "gqb",
+    "body": [
+      "// eslint-disable-next-line @typescript-eslint/no-explicit-any",
+      "public static getQueryBuilder(qb: SelectQueryBuilder<any>) {",
+      "${1}",
+      "}"
+    ],
+    "description": "getQueryBuilder"
+  },
+  "queryBuilder": {
+    "prefix": "qb",
+    "body": ["queryBuilder"],
+    "description": "queryBuilder"
+  },
+  "Import * As Loaders": {
+    "prefix": "isdl",
+    "body": ["import * as Loaders from '${1:./loaders}';"],
+    "description": "Import * As Loaders"
+  },
+  "Import * As Services": {
+    "prefix": "iss",
+    "body": ["import * as Services from '${1:./services}';"],
+    "description": "Import * As Services"
+  },
+  "Import * As Resolvers": {
+    "prefix": "isr",
+    "body": ["import * as Resolvers from '${1:./resolvers}';"],
+    "description": "Import * As Resolvers"
+  },
+  "Export Symbol": {
+    "prefix": "es",
+    "body": ["export const ${1:} = Symbol('${1:}');"],
+    "description": "Export Symbol"
+  },
+  "Export * from": {
+    "prefix": "ef",
+    "body": ["export * from '${1:}';"],
+    "description": "Export * from"
+  },
+  "Private Readonly": {
+    "prefix": "pr",
+    "body": ["private readonly ${1}: ${1:UserService},"],
+    "description": "Private Readonly"
+  },
+
+  "DataSource": {
+    "prefix": "ds",
+    "body": ["private readonly dataSource: DataSource"],
+    "description": "DataSource"
+  },
+
+  "Nest Service": {
+    "prefix": "nss",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "",
+      "@Injectable()",
+      "export class $1 {",
+      "\tconstructor() {}",
+      "}",
+      ""
+    ],
+    "description": "Nest Service"
+  },
+  "Nest Inject Repository": {
+    "prefix": "nsir",
+    "body": [
+      "@InjectRepository($1)",
+      "private readonly $2Repo: Repository<$1>,"
+    ],
+    "description": "Export * from"
+  },
+  "TypeORM OneToOne ": {
+    "prefix": "too",
+    "body": [
+      "@OneToOne('${1:users}')",
+      "@JoinColumn({ name: '${2:userId}', referencedColumnName: 'id' })",
+      "${3:user}: ${4:UserEntity};"
+    ],
+    "description": "TypeORM OneToOne "
+  },
+  "TypeORM OneToOne Nullable": {
+    "prefix": "toon",
+    "body": [
+      "@OneToOne('${1:users}', { nullable: true })",
+      "@JoinColumn({ name: '${2:userId}', referencedColumnName: 'id' })",
+      "${3:user}?: ${4:UserEntity} | null;"
+    ],
+    "description": "TypeORM OneToOne Nullable"
+  },
+  "TypeORM ManyToOne ": {
+    "prefix": "tmo",
+    "body": [
+      "@ManyToOne('${1:users}')",
+      "@JoinColumn({ name: '${2:userId}', referencedColumnName: 'id' })",
+      "${3:user}: ${4:UserEntity};"
+    ],
+    "description": "TypeORM ManyToOne "
+  },
+  "TypeORM ManyToOne Nullable": {
+    "prefix": "tmon",
+    "body": [
+      "@ManyToOne('${1:users}', { nullable: true })",
+      "@JoinColumn({ name: '${2:userId}', referencedColumnName: 'id' })",
+      "${3:user}?: ${4:UserEntity} | null;"
+    ],
+    "description": "TypeORM ManyToOne Nullable"
+  },
+  "TypeORM OneToMany ": {
+    "prefix": "tom",
+    "body": [
+      "@OneToMany('${1:users}')",
+      "@JoinColumn({ name: '${2:userId}', referencedColumnName: 'id' })",
+      "${3:user}: ${4:UserEntity};"
+    ],
+    "description": "TypeORM OneToMany "
+  },
+  "TypeORM OneToMany Nullable": {
+    "prefix": "tomn",
+    "body": [
+      "@OneToMany('${1:users}', { nullable: true })",
+      "@JoinColumn({ name: '${2:userId}', referencedColumnName: 'id' })",
+      "${3:user}?: ${4:UserEntity} | null;"
+    ],
+    "description": "TypeORM OneToMany Nullable"
+  },
+  "TypeORM Field": {
+    "prefix": "tf",
+    "body": [
+      "@Column({ type: 'varchar' })",
+      "@Field(() => String)",
+      "${1:name}: string;"
+    ],
+    "description": "TypeORM Field"
+  },
+  "TypeORM Column": {
+    "prefix": "tc",
+    "body": ["@Column({ type: 'varchar' })", "${1:name}: string;"],
+    "description": "TypeORM Column"
+  },
+  "TypeORM Entity": {
+    "prefix": "te",
+    "body": [
+      "import { Field, ID, ObjectType } from '@nestjs/graphql';",
+      "import {",
+      "\tColumn,",
+      "\tCreateDateColumn,",
+      "\tEntity,",
+      "\tPrimaryGeneratedColumn,",
+      "\tUpdateDateColumn,",
+      "} from 'typeorm';",
+      "",
+      "@Entity('users')",
+      "@ObjectType('User')",
+      "export class UserEntity {",
+      "\t@PrimaryGeneratedColumn('uuid')",
+      "\t@Field(() => ID)",
+      "\tid: string;",
+      "",
+      "\t@Column({ type: 'varchar' })",
+      "\t@Field(() => String)",
+      "\tname: string;",
+      "",
+      "\t@CreateDateColumn({ type: 'timestamp with time zone' })",
+      "\tcreatedAt: Date;",
+      "",
+      "\t@UpdateDateColumn({ type: 'timestamp with time zone' })",
+      "\tupdatedAt: Date;",
+      "}",
+      ""
+    ],
+    "description": "TypeORM Entity"
+  },
+  "TypeORM Entity List": {
+    "prefix": "tel",
+    "body": [
+      "@ObjectType('${1:UserList}')",
+      "export class ${1}Dto extends PaginatedResponse(${2:UserEntity}) {}"
+    ],
+    "description": "TypeORM Entity List"
+  },
+  "GraphQL Queries": {
+    "prefix": "gq",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "",
+      "@Injectable()",
+      "export class UserQueries {",
+      "\tconstructor() {}",
+      "}",
+      ""
+    ],
+    "description": "GraphQL Queries"
+  },
+  "GraphQL Queries Find One": {
+    "prefix": "gqo",
+    "body": [
+      "@Query(() => ${2:UserEntity})",
+      "async ${1:user}(@Args() { id }: FindByUUIDArgs): Promise<$2> {",
+      "\treturn new $2();",
+      "}",
+      ""
+    ],
+    "description": "GraphQL Queries Find One"
+  },
+  "GraphQL Queries Find Many": {
+    "prefix": "gqm",
+    "body": [
+      "@Query(() => ${2:UserListDto})",
+      "async ${1:users}(): Promise<$2> {",
+      "\nreturn { items, total };",
+      "}",
+      ""
+    ],
+    "description": "GraphQL Queries Find Many"
+  },
+  "GraphQL Mutations": {
+    "prefix": "gm",
+    "body": [
+      "import { Injectable } from '@nestjs/common';",
+      "",
+      "@Injectable()",
+      "export class ${1:UserMutations} {",
+      "\tconstructor() {}",
+      "}",
+      ""
+    ],
+    "description": "GraphQL Mutations"
+  },
+  "GraphQL Mutations Create": {
+    "prefix": "gmc",
+    "body": [
+      "@Mutation(() => ${2:UserEntity})",
+      "async ${1:createUser}(@Args() { input }: CreateUserInput): Promise<$2> {",
+      "\treturn new $2();",
+      "}",
+      ""
+    ],
+    "description": "GraphQL Mutations Create"
+  },
+  "GraphQL Resolver": {
+    "prefix": "gr",
+    "body": [
+      "import { Resolver } from '@nestjs/graphql';",
+      "",
+      "@Resolver(() => ${2:UserEntity})",
+      "export class ${1:User}Resolver {",
+      "\tconstructor() {}",
+      "}",
+      ""
+    ],
+    "description": "GraphQL Resolver"
+  },
+  "DataLoader": {
+    "prefix": "dl",
+    "body": [
+      "import { BadRequestException, Injectable } from '@nestjs/common';",
+      "import { InjectRepository } from '@nestjs/typeorm';",
+      "import * as DataLoader from 'dataloader';",
+      "import { Repository } from 'typeorm';",
+      "",
+      "@Injectable()",
+      "export class ${1:User}Loader {",
+      "\tconstructor(",
+      "\t\t@InjectRepository($2)",
+      "\t\tprivate readonly ${3:user}Repo: Repository<$2>,",
+      "\t) {}",
+      "",
+      "\treadonly loader = new DataLoader<string, ${2:UserEntity}>(",
+      "\t\tasync (ids: readonly string[]) => {",
+      "\t\t\tconst items = await this.userRepo",
+      "\t\t\t\t.createQueryBuilder('user')",
+      "\t\t\t\t.where('user.id IN (:...ids)', { ids })",
+      "\t\t\t\t.getMany();",
+      "",
+      "\t\t\tconst itemMap = new Map<string, $2>();",
+      "\t\t\titems.forEach((item) => itemMap.set(item.id, item));",
+      "",
+      "\t\t\treturn ids.map(",
+      "\t\t\t\t(id) => itemMap.get(id) || new BadRequestException('user not found'),",
+      "\t\t\t);",
+      "\t\t},",
+      "\t);",
+      "}",
+      ""
+    ],
+    "description": "DataLoader"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "10x-developer-tw-nestjs-snippets",
+  "displayName": "10xDeveloperTW NestJS Snippets",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "10xDeveloperTW",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/10xDeveloperTW/vscode-extensions.git"
+  }
+}
